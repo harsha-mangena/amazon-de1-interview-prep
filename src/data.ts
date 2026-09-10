@@ -159,9 +159,9 @@ export const RESOURCES: Resource[] = [
 ];
 
 export const ALL_TASK_IDS: string[] = [
-  ...SQL_TASKS,
-  ...PYTHON_TASKS,
-  ...MODEL_TASKS,
+  ...SQL_TASKS.map((task) => task.id),
+  ...PYTHON_TASKS.map((task) => task.id),
+  ...MODEL_TASKS.map((task) => task.id),
   ...LPS.map((lp) => lp.id),
-  ...WEEKS.flatMap((week) => week.items),
-].map((item) => item.id);
+  ...WEEKS.flatMap((week) => week.items.map((item) => item.id)),
+];
